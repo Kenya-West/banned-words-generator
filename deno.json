@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "run:local": "NODE_ENV=\"local\" deno run --inspect --allow-net --allow-env --allow-read --allow-write=./tmp,./dist .\\index.ts",
+    "run:local:break": "NODE_ENV=\"local\" deno run --inspect-brk --allow-net --allow-env --allow-read --allow-write=./tmp,./dist .\\index.ts",
+    "run:development": "NODE_ENV=\"development\" deno run --inspect --allow-net --allow-env --allow-read --allow-write=./tmp,./dist .\\index.ts",
+    "run:development:break": "NODE_ENV=\"development\" deno run --inspect-brk --allow-net --allow-env --allow-read --allow-write=./tmp,./dist .\\index.ts",
+    "run:production": "NODE_ENV=\"production\" deno run --inspect --allow-net --allow-env --allow-read --allow-write=./tmp,./dist .\\index.ts"
+  }
+}
