@@ -22,7 +22,31 @@ export class TransliterationGeneratorService {
         return Array.from(result);
     }
 
+    public generateRecursively(word: string): string[] {
+        const replaceWithTranslitMap = (word: string, index: number, numReplaced: number, combinations: Set<string> = new Set()): Set<string> => {
+            if (index === word.length) {
+              if (numReplaced > 0) {
+                combinations.add(word);
+              }
+              return combinations;
+            }
+            
+            this.replaceChar(word[index]).forEach((char: string) => {
+                replaceWithTranslitMap(word, index + 1, numReplaced, combinations);
+                const currentCharReplaced = word.slice(0, index) + char + word.slice(index + 1);
+                replaceWithTranslitMap(currentCharReplaced, index + 1, numReplaced + 1, combinations);
+            });
+          
+            return combinations;
+          }
+          
+          const combinationsSet = replaceWithTranslitMap(word, 0, 0);
+          const uniqueCombinations = Array.from(combinationsSet);
+          return uniqueCombinations;
+    }
+
     private replaceChar(char: string): string[] {
         return TranslitMap.get(char) ?? [char];
     }
+
 }

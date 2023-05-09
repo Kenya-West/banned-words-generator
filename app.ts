@@ -34,7 +34,7 @@ export class App {
             dgs.generateDeclesion(sanitizedWord).forEach((declesion: string) => {
                 result.add(declesion);
             });
-            tgs.generateTransliteration(sanitizedWord).forEach((transliteration: string) => {
+            tgs.generateRecursively(sanitizedWord).forEach((transliteration: string) => {
                 result.add(transliteration);
             });
         })
